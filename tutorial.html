@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List of available models &mdash; NEST</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            NEST
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">List of available models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#loading-a-model">Loading a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-a-star">Estimating the age of a star</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-a-star-with-gbp-grp">Estimating the age of a star with GBP &amp; GRP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-multiple-stars">Estimating the age of multiple stars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-a-star-with-uncertainties">Estimating the age of a star with uncertainties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-multiple-stars-with-uncertainties">Estimating the age of multiple stars with uncertainties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#working-with-big-datasets">Working with big datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#age-model-properties">Age model properties</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NEST</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">List of available models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial.ipynb" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>This page will guide you on the different options the NEST package provides for dating stars.</p>
+<p>You can download these docs as a jupyter notebook here <a class="reference download internal" download="" href="_downloads/6153bfdc5d92c5a8d08f9b6d24cfca9a/tutorial.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">tutorial.ipynb</span></code></a></p>
+<p>Start by importing it:</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NEST</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="list-of-available-models">
+<h1>List of available models<a class="headerlink" href="#list-of-available-models" title="Link to this heading"></a></h1>
+<p>Each model is a neural network trained on a different evolutionary stellar grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NEST</span><span class="o">.</span><span class="n">available_models</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BaSTIModel (http://basti-iac.oa-abruzzo.inaf.it/)
+PARSECModel (https://stev.oapd.inaf.it/PARSEC/)
+MISTModel (https://waps.cfa.harvard.edu/MIST/)
+GenevaModel (https://www.unige.ch/sciences/astro/evolution/en/database/syclist)
+DartmouthModel (https://rcweb.dartmouth.edu/stellar/)
+YaPSIModel (http://www.astro.yale.edu/yapsi/)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-a-model">
+<h1>Loading a model<a class="headerlink" href="#loading-a-model" title="Link to this heading"></a></h1>
+<p>By default, the age models use sklearn to run the neural networks. If you do not have it installed, or don’t want to use it, you can pass the argument <code class="docutils literal notranslate"><span class="pre">use_sklearn=False</span></code> to switch to a numpy version..</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be aware though, in this mode it becomes significantly slower once you run the models on more than ~100 stars</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span> <span class="o">=</span> <span class="n">NEST</span><span class="o">.</span><span class="n">BaSTIModel</span><span class="p">(</span><span class="n">use_tqdm</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#age_model = NNSA.BaSTIModel(use_sklearn=False)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimating-the-age-of-a-star">
+<h1>Estimating the age of a star<a class="headerlink" href="#estimating-the-age-of-a-star" title="Link to this heading"></a></h1>
+<p>To estimate the age of a star, use the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method, and pass it a metallicity met, magnitude mag and color col. Note that, with only these values provided, the return value is a np.array of shape (1,1). The reason will be clear if you check later uses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span><span class="n">met</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">mag</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.72104573]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">check_domain()</span></code> method to verify that the star is within the bounds of the isochrones points used for training the neural networks. The function only checks for this in the HR Diagram, so you pass it a metallicity met, magnitude mag and color col.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">check_domain</span><span class="p">(</span><span class="n">met</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">mag</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimating-the-age-of-a-star-with-gbp-grp">
+<h1>Estimating the age of a star with GBP &amp; GRP<a class="headerlink" href="#estimating-the-age-of-a-star-with-gbp-grp" title="Link to this heading"></a></h1>
+<p>If you are using Gaia magnitudes and colors, you can also pass the red GRP and blue GBP magnitudes separately as additional inputs. This generally results in better estimations.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span><span class="n">met</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">mag</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">GBP</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">GRP</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.34888727]])
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="estimating-the-age-of-multiple-stars">
+<h1>Estimating the age of multiple stars<a class="headerlink" href="#estimating-the-age-of-multiple-stars" title="Link to this heading"></a></h1>
+<p>If you pass lists of values of size N as inputs instead of single values, the return value of the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method will be a np.array of shape (N,1). Again, the reason for the 2D shape will be clear by checking later uses.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you have tqdm installed, you can display the progress of the age predictions. By default, this display is on, but you can turn it off when you initiate the age_model by passing the argument <code class="docutils literal notranslate"><span class="pre">use_tqdm=False</span></code>.</p>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span>
+    <span class="n">met</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">mag</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.72104573],
+       [5.97925446]])
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span>
+    <span class="n">met</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">mag</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span>
+    <span class="n">GBP</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">GRP</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.34888727],
+       [2.20902813]])
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>You can also check if the stars are within the training domain all at once by passing lists of metallicity met, magnitude mag &amp; col values col.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">check_domain</span><span class="p">(</span>
+    <span class="n">met</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">mag</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True,  True])
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>That way, you can crossmatch both outputs to only keep stars whose age estimates we can reliably trust:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">met</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="o">-</span><span class="mf">3.0</span><span class="p">]</span>
+<span class="n">mag</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">]</span>
+<span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="n">GBP</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">GRP</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span><span class="n">met</span><span class="o">=</span><span class="n">met</span><span class="p">,</span><span class="n">mag</span><span class="o">=</span><span class="n">mag</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span><span class="n">GBP</span><span class="o">=</span><span class="n">GBP</span><span class="p">,</span><span class="n">GRP</span><span class="o">=</span><span class="n">GRP</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+<span class="n">outside_domain</span> <span class="o">=</span> <span class="n">age_model</span><span class="o">.</span><span class="n">check_domain</span><span class="p">(</span><span class="n">met</span><span class="o">=</span><span class="n">met</span><span class="p">,</span><span class="n">mag</span><span class="o">=</span><span class="n">mag</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outside_domain</span><span class="p">)</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="n">ages</span><span class="p">[</span><span class="n">outside_domain</span><span class="p">]</span><span class="c1">#Only keep ages of stars within the training domain of the NN</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.34888727]
+ [2.20902813]
+ [3.38402904]
+ [6.08718654]]
+[ True  True  True False]
+[[1.34888727]
+ [2.20902813]
+ [3.38402904]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimating-the-age-of-a-star-with-uncertainties">
+<h1>Estimating the age of a star with uncertainties<a class="headerlink" href="#estimating-the-age-of-a-star-with-uncertainties" title="Link to this heading"></a></h1>
+<p>If you have uncertainty values for a star, you can pass them to the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method by adding values for emet, emag &amp; ecol. The idea is that multiple age predictions will be made by offsetting the star’s metallicity met, magnitude mag &amp; col col by adding a random gaussian offset of width (emet,emag,ecol). The number of realisations made is controlled by the parameter n. The output of the method will then be a np.array of shape (1,n).</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span><span class="n">met</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">mag</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">emet</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">emag</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">ecol</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.7256106 , 2.00334378, 1.85396521, 1.75088056, 1.9097981 ,
+        1.6040866 , 1.65672647, 1.94882322, 1.99593322, 1.88873856]])
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Once the ages have been predicted for each star n times, you can call statistical methods <code class="docutils literal notranslate"><span class="pre">model.mean_ages()</span></code>, <code class="docutils literal notranslate"><span class="pre">model.median_ages()</span></code>, <code class="docutils literal notranslate"><span class="pre">model.mode_ages()</span></code> and <code class="docutils literal notranslate"><span class="pre">model.std_ages()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">mean_ages</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">median_ages</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">mode_ages</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">std_ages</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.68963035]
+[1.68409769]
+[1.60851594]
+[0.09283736]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimating-the-age-of-multiple-stars-with-uncertainties">
+<h1>Estimating the age of multiple stars with uncertainties<a class="headerlink" href="#estimating-the-age-of-multiple-stars-with-uncertainties" title="Link to this heading"></a></h1>
+<p>Finally, you can combine multiple (N) stars age estimations and added uncertainties, with n Monte Carlo realisations. The output of the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method will then be a np.array of shape (N,n). A value of n=100 seems to be a good middle ground between speed and accurate predictions. If the number of stars is low, n&gt;=1000 gives enough realisations to draw a PDF.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span>
+    <span class="n">met</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">mag</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span>
+    <span class="n">emet</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+    <span class="n">emag</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+    <span class="n">ecol</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.71462611, 1.94582103, 1.89940169, 2.97884081, 2.08031333,
+        1.58125759, 1.59831936, 1.83501568, 2.13068263, 1.74986554],
+       [5.20361322, 6.03242598, 6.830097  , 5.96518632, 6.54942971,
+        3.71275077, 6.11190383, 4.557374  , 5.16837155, 5.88224765]])
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">mean_ages</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">median_ages</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">mode_ages</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_model</span><span class="o">.</span><span class="n">std_ages</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.80196219 5.54847086]
+[1.67774137 5.32251073]
+[1.6429014  4.87189199]
+[0.32414629 0.85262662]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-big-datasets">
+<h1>Working with big datasets<a class="headerlink" href="#working-with-big-datasets" title="Link to this heading"></a></h1>
+<p>In the event you are working with big datasets, you might not want to store every sampled age for every star, as you might run out of memory to store all this information.
+In this case, you can pass the argument <code class="docutils literal notranslate"><span class="pre">store_samples=False</span></code> to the <code class="docutils literal notranslate"><span class="pre">age_prediction()</span></code> method. Instead of returning a (N,n) np.array, the method will return a dict with keys <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code> and <code class="docutils literal notranslate"><span class="pre">std</span></code>, which each contain a (N) np.array with the given statistical property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind this will cause a significant slowdown, as the statistical properties have to be computed for each star individually before discarding all its samples.</p>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span>
+    <span class="n">met</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">mag</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span>
+    <span class="n">emet</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+    <span class="n">emag</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+    <span class="n">ecol</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">store_samples</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean&#39;: array([2.09471423, 6.01643673]),
+ &#39;median&#39;: array([1.75520015, 6.15407341]),
+ &#39;mode&#39;: array([1.75, 6.37]),
+ &#39;std&#39;: array([1.13576418, 0.7743602 ])}
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="age-model-properties">
+<h1>Age model properties<a class="headerlink" href="#age-model-properties" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">age_model.samples</span></code> returns an (N,n,m) np.array of the latest samples used for the age predictions, if they were stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">age_model.ages</span></code> returns an (N,n) np.array of the latest age predictions ran.
+N : number of stars, n : number of samples, m : inputs dimension (3 if using metallicity,magnitude &amp; color, 5 if using GBP &amp; GRP in addition).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Here is an example on how you can retrieve the samples</span>
+<span class="c1">#of the age predictions to investigate individual predictions</span>
+<span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span>
+    <span class="n">met</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">mag</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span>
+    <span class="n">emet</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+    <span class="n">emag</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+    <span class="n">ecol</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+
+<span class="n">star_i</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">#Select the second star</span>
+<span class="n">magnitudes</span> <span class="o">=</span> <span class="n">age_model</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">star_i</span><span class="p">,:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">age_model</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">star_i</span><span class="p">,:,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="n">age_model</span><span class="o">.</span><span class="n">ages</span><span class="p">[</span><span class="n">star_i</span><span class="p">]</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span><span class="n">magnitudes</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">ages</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Age [Gyr]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$G_</span><span class="si">{BP}</span><span class="s1">$ - $G_</span><span class="si">{RP}</span><span class="s1">$ [mag]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$M_G$ [mag]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9dcbe7be855a80922cf0b974256a778209ab77ac1e8a8b31fa4ff3b2d59aca7e.png" src="_images/9dcbe7be855a80922cf0b974256a778209ab77ac1e8a8b31fa4ff3b2d59aca7e.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
