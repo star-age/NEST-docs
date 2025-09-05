@@ -71,6 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-multiple-stars-with-uncertainties">Estimating the age of multiple stars with uncertainties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#working-with-big-datasets">Working with big datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#age-model-properties">Age model properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#plotting-an-hr-diagram">Plotting an HR Diagram</a></li>
 </ul>
 
         </div>
@@ -473,6 +474,50 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/9dcbe7be855a80922cf0b974256a778209ab77ac1e8a8b31fa4ff3b2d59aca7e.png" src="_images/9dcbe7be855a80922cf0b974256a778209ab77ac1e8a8b31fa4ff3b2d59aca7e.png" />
+</div>
+</div>
+</section>
+<section id="plotting-an-hr-diagram">
+<h1>Plotting an HR Diagram<a class="headerlink" href="#plotting-an-hr-diagram" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You need the matplotlib package for his function.</p>
+</div>
+<p>To visualize your star sample in an HR Diagram, you can use the <code class="docutils literal notranslate"><span class="pre">HR_diagram()</span></code> method. It plots your stars, colored by their estimated age. It also plots isochrones from the evolutionary grid the age model Neural Network was trained on.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, the curve data is not included in the NEST package, so the first time, you will be prompted to download them (15.6Mb).</p>
+</div>
+<p>This method is very flexible in its arguments. You can pass it:</p>
+<ul class="simple">
+<li><p>nothing if you already ran <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> with <code class="docutils literal notranslate"><span class="pre">store_samples=True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">met</span></code>,<code class="docutils literal notranslate"><span class="pre">mag</span></code>,<code class="docutils literal notranslate"><span class="pre">col</span></code> and it will compute the ages</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mag</span></code>,<code class="docutils literal notranslate"><span class="pre">col</span></code>,<code class="docutils literal notranslate"><span class="pre">ages</span></code> and it will use the ages provided</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">isochrone_met</span></code> option lets you choose which set of isochrones will be plotted. You can choose between [M/H] = {-2,1,0}. The <code class="docutils literal notranslate"><span class="pre">age_type</span></code> option lets you choose the type of ages used to color the stars, between ‘median’, ‘mean’ and ‘mode’. Finally, the <code class="docutils literal notranslate"><span class="pre">check_domain</span></code> option restricts the plotted stars to stars being in the domain of the training grid (<code class="docutils literal notranslate"><span class="pre">true</span></code> by default).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In an interactive matplotlib backend, you can hover over the isochrones to get their age.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">age_model</span> <span class="o">=</span> <span class="n">NEST</span><span class="o">.</span><span class="n">BaSTIModel</span><span class="p">()</span>
+<span class="n">met</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">age_model</span><span class="o">.</span><span class="n">HR_diagram</span><span class="p">(</span><span class="n">met</span><span class="p">,</span><span class="n">mag</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 100/100 [00:00&lt;00:00, 3436.91it/s]
+100%|██████████| 100/100 [00:00&lt;00:00, 14876.58it/s]
+</pre></div>
+</div>
+<img alt="_images/a7324d09ea2de1543d0f37542ce692b0018867b48f83e5e4c908c548cacecff7.png" src="_images/a7324d09ea2de1543d0f37542ce692b0018867b48f83e5e4c908c548cacecff7.png" />
 </div>
 </div>
 </section>
