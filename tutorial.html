@@ -16,6 +16,7 @@
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=9eb32ce0"></script>
@@ -34,6 +35,8 @@
       <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
       <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -98,7 +101,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p>This page will guide you on the different options the NEST package provides for dating stars.</p>
+  <p>This page will guide you on the different options the <strong>NEST</strong> package provides for dating stars.</p>
 <p>You can download these docs as a jupyter notebook here <a class="reference download internal" download="" href="_downloads/6153bfdc5d92c5a8d08f9b6d24cfca9a/tutorial.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">tutorial.ipynb</span></code></a></p>
 <p>Start by importing it:</p>
 <div class="cell tag_remove-output docutils container">
@@ -108,7 +111,7 @@
 </div>
 </div>
 </div>
-<section id="list-of-available-models">
+<section class="tex2jax_ignore mathjax_ignore" id="list-of-available-models">
 <h1>List of available models<a class="headerlink" href="#list-of-available-models" title="Link to this heading"></a></h1>
 <p>Each model is a neural network trained on a different evolutionary stellar grid.</p>
 <div class="cell docutils container">
@@ -121,15 +124,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BaSTIModel (http://basti-iac.oa-abruzzo.inaf.it/)
 PARSECModel (https://stev.oapd.inaf.it/PARSEC/)
 MISTModel (https://waps.cfa.harvard.edu/MIST/)
-GenevaModel (https://www.unige.ch/sciences/astro/evolution/en/database/syclist)
+GenevaModel (https://www.unige.ch/sciences/astro/evolution/en/database/syclist/)
 DartmouthModel (https://rcweb.dartmouth.edu/stellar/)
 YaPSIModel (http://www.astro.yale.edu/yapsi/)
+BaSTI_HSTModel (http://basti-iac.oa-abruzzo.inaf.it/)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="loading-a-model">
+<section class="tex2jax_ignore mathjax_ignore" id="loading-a-model">
 <h1>Loading a model<a class="headerlink" href="#loading-a-model" title="Link to this heading"></a></h1>
 <p>By default, the age models use sklearn to run the neural networks. If you do not have it installed, or do not want to use it, you can pass the argument <code class="docutils literal notranslate"><span class="pre">use_sklearn=False</span></code> to switch to a numpy version.</p>
 <div class="admonition note">
@@ -138,14 +142,37 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span> <span class="o">=</span> <span class="n">NEST</span><span class="o">.</span><span class="n">BaSTIModel</span><span class="p">(</span><span class="n">use_tqdm</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span> <span class="o">=</span> <span class="n">NEST</span><span class="o">.</span><span class="n">BaSTIModel</span><span class="p">()</span>
 <span class="c1">#age_model = NNSA.BaSTIModel(use_sklearn=False)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The color and magnitudes are, for most models, in Gaia passbands. Magnitude is <span class="math notranslate nohighlight">\(M_G\)</span> and color is <span class="math notranslate nohighlight">\((G_{BP}-G_{RP})\)</span>. The only exception is the <code class="docutils literal notranslate"><span class="pre">BaSTI_HSTModel()</span></code>, which uses <span class="math notranslate nohighlight">\(F814W\)</span> as magnitude and <span class="math notranslate nohighlight">\((F606W - F814W)\)</span> as color.</p>
+<p>If in doubt, print <code class="docutils literal notranslate"><span class="pre">age_model</span></code> to get a description of it.</p>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BaSTI Age Model, Gaia photometry: mag=MG, col=(GBP-GRP).
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 </section>
-<section id="estimating-the-age-of-a-star">
+<section class="tex2jax_ignore mathjax_ignore" id="estimating-the-age-of-a-star">
 <h1>Estimating the age of a star<a class="headerlink" href="#estimating-the-age-of-a-star" title="Link to this heading"></a></h1>
 <p>To estimate the age of a star, use the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method, and pass it a metallicity met, magnitude mag and color col. Note that, with only these values provided, the return value is a np.array of shape (1,1). The reason will be clear if you check later uses.</p>
 <div class="cell docutils container">
@@ -174,7 +201,7 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 </div>
 </div>
 </section>
-<section id="estimating-the-age-of-a-star-with-gbp-grp">
+<section class="tex2jax_ignore mathjax_ignore" id="estimating-the-age-of-a-star-with-gbp-grp">
 <h1>Estimating the age of a star with GBP &amp; GRP<a class="headerlink" href="#estimating-the-age-of-a-star-with-gbp-grp" title="Link to this heading"></a></h1>
 <p>If you are using Gaia magnitudes and colors, you can also pass the red GRP and blue GBP magnitudes separately as additional inputs. This generally results in better estimations.</p>
 <div class="cell tag_hide-output docutils container">
@@ -196,7 +223,7 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 </details>
 </div>
 </section>
-<section id="estimating-the-age-of-multiple-stars">
+<section class="tex2jax_ignore mathjax_ignore" id="estimating-the-age-of-multiple-stars">
 <h1>Estimating the age of multiple stars<a class="headerlink" href="#estimating-the-age-of-multiple-stars" title="Link to this heading"></a></h1>
 <p>If you pass lists of values of size N as inputs instead of single values, the return value of the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method will be a np.array of shape (N,1). Again, the reason for the 2D shape will be clear by checking later uses.</p>
 <div class="admonition tip">
@@ -305,7 +332,7 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 </div>
 </div>
 </section>
-<section id="estimating-the-age-of-a-star-with-uncertainties">
+<section class="tex2jax_ignore mathjax_ignore" id="estimating-the-age-of-a-star-with-uncertainties">
 <h1>Estimating the age of a star with uncertainties<a class="headerlink" href="#estimating-the-age-of-a-star-with-uncertainties" title="Link to this heading"></a></h1>
 <p>If you have uncertainty values for a star, you can pass them to the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method by adding values for emet, emag &amp; ecol. The idea is that multiple age predictions will be made by offsetting the star’s metallicity met, magnitude mag &amp; color col by adding a random gaussian offset of width (emet,emag,ecol). The number of realisations made is controlled by the parameter n. The output of the method will then be a np.array of shape (1,n).</p>
 <div class="cell tag_hide-output docutils container">
@@ -320,8 +347,8 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.7256106 , 2.00334378, 1.85396521, 1.75088056, 1.9097981 ,
-        1.6040866 , 1.65672647, 1.94882322, 1.99593322, 1.88873856]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.69008492, 2.22310332, 2.30607   , 2.52523515, 1.66416769,
+        1.68041382, 1.77257101, 1.74791304, 1.79404692, 1.7958949 ]])
 </pre></div>
 </div>
 </div>
@@ -338,16 +365,16 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.68963035]
-[1.68409769]
-[1.60851594]
-[0.09283736]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.91995008]
+[1.78330896]
+[1.68619596]
+[0.2942039]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="estimating-the-age-of-multiple-stars-with-uncertainties">
+<section class="tex2jax_ignore mathjax_ignore" id="estimating-the-age-of-multiple-stars-with-uncertainties">
 <h1>Estimating the age of multiple stars with uncertainties<a class="headerlink" href="#estimating-the-age-of-multiple-stars-with-uncertainties" title="Link to this heading"></a></h1>
 <p>Finally, you can combine multiple (N) stars age estimations and added uncertainties, with n Monte Carlo realisations. The output of the <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> method will then be a np.array of shape (N,n). A value of n=100 seems to be a good middle ground between speed and accurate predictions. If the number of stars is low, n&gt;=1000 gives enough realisations to draw a PDF.</p>
 <div class="cell tag_hide-output docutils container">
@@ -370,10 +397,10 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.71462611, 1.94582103, 1.89940169, 2.97884081, 2.08031333,
-        1.58125759, 1.59831936, 1.83501568, 2.13068263, 1.74986554],
-       [5.20361322, 6.03242598, 6.830097  , 5.96518632, 6.54942971,
-        3.71275077, 6.11190383, 4.557374  , 5.16837155, 5.88224765]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.81906147, 2.45748128, 1.98144438, 3.26404037, 2.11309181,
+        1.90963065, 1.58833429, 1.80982144, 1.75279195, 1.8972145 ],
+       [4.73227667, 5.14324081, 6.22592708, 5.11409374, 5.70965976,
+        4.81133615, 5.74454807, 6.07974536, 4.85842586, 6.0741056 ]])
 </pre></div>
 </div>
 </div>
@@ -389,16 +416,16 @@ YaPSIModel (http://www.astro.yale.edu/yapsi/)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.80196219 5.54847086]
-[1.67774137 5.32251073]
-[1.6429014  4.87189199]
-[0.32414629 0.85262662]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.05929122 5.44933591]
+[1.90342258 5.42645028]
+[1.61049798 6.08756311]
+[0.45861589 0.549749  ]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="working-with-big-datasets">
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-big-datasets">
 <h1>Working with big datasets<a class="headerlink" href="#working-with-big-datasets" title="Link to this heading"></a></h1>
 <p>In the event you are working with big datasets, you might not want to store every sampled age for every star, as you might run out of memory to store all this information.
 In this case, you can pass the argument <code class="docutils literal notranslate"><span class="pre">store_samples=False</span></code> to the <code class="docutils literal notranslate"><span class="pre">age_prediction()</span></code> method. Instead of returning a (N,n) np.array, the method will return a dict with keys <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code> and <code class="docutils literal notranslate"><span class="pre">std</span></code>, which each contain a (N) np.array with the given statistical property.</p>
@@ -427,17 +454,17 @@ In this case, you can pass the argument <code class="docutils literal notranslat
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean&#39;: array([2.09471423, 6.01643673]),
- &#39;median&#39;: array([1.75520015, 6.15407341]),
- &#39;mode&#39;: array([1.75, 6.37]),
- &#39;std&#39;: array([1.13576418, 0.7743602 ])}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean&#39;: array([2.07097338, 5.81777863]),
+ &#39;median&#39;: array([1.75000115, 5.96110458]),
+ &#39;mode&#39;: array([1.675, 6.475]),
+ &#39;std&#39;: array([0.84768186, 0.8482442 ])}
 </pre></div>
 </div>
 </div>
 </details>
 </div>
 </section>
-<section id="age-model-properties">
+<section class="tex2jax_ignore mathjax_ignore" id="age-model-properties">
 <h1>Age model properties<a class="headerlink" href="#age-model-properties" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">age_model.samples</span></code> returns an (N,n,m) np.array of the latest samples used for the age predictions, if they were stored.</p></li>
@@ -473,11 +500,11 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9dcbe7be855a80922cf0b974256a778209ab77ac1e8a8b31fa4ff3b2d59aca7e.png" src="_images/9dcbe7be855a80922cf0b974256a778209ab77ac1e8a8b31fa4ff3b2d59aca7e.png" />
+<img alt="_images/690c83298fc9f9a5a40e843d957d9444f45ba2d3fe115c9b7ce8db1510f8aa8c.png" src="_images/690c83298fc9f9a5a40e843d957d9444f45ba2d3fe115c9b7ce8db1510f8aa8c.png" />
 </div>
 </div>
 </section>
-<section id="plotting-an-hr-diagram">
+<section class="tex2jax_ignore mathjax_ignore" id="plotting-an-hr-diagram">
 <h1>Plotting an HR Diagram<a class="headerlink" href="#plotting-an-hr-diagram" title="Link to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -513,11 +540,26 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 100/100 [00:00&lt;00:00, 8103.21it/s]
-100%|██████████| 100/100 [00:00&lt;00:00, 29604.07it/s]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.32127972 -1.94498436 -0.49712305 -1.95264323 -1.52635356 -1.99187031
+ -0.92846815 -1.95504969 -0.33957069 -0.86570884 -0.74868447 -1.43782219
+ -1.38942308 -0.57602733 -1.42918902 -0.03062132 -0.47874858 -0.58103346
+ -0.80694701 -1.0324925  -0.54192474 -0.64078898 -1.65447699 -0.08507601
+ -0.60418409 -1.47305636 -0.77702417 -0.94760187 -1.46541365 -0.32021805
+ -0.17220602 -0.27339968 -0.1626988  -1.84579341 -0.02938594 -1.49322095
+ -0.79236661 -1.17601767 -0.70350461 -1.02201562 -1.66883228 -0.6572283
+ -1.16748316 -1.2664032  -1.2748056  -0.41492059 -1.37578459 -1.36834622
+ -0.59145993 -0.18256234 -1.63485763 -1.58045589 -0.6329881  -1.59577602
+ -1.92867596 -1.71552762 -0.56767161 -1.11247534 -1.45083721 -1.25862752
+ -0.07600204 -1.83104084 -1.88662088 -0.28154779 -1.63160081 -1.80036339
+ -0.56657154 -0.37365115 -0.47713915 -0.72759991 -1.09324491 -1.99814619
+ -1.17358535 -1.88677207 -1.07271124 -1.96481188 -0.5776946  -0.15934468
+ -1.37939531 -0.87726434 -0.55067214 -0.98225361 -0.596304   -0.75379434
+ -1.47076367 -0.80570647 -0.82993505 -0.52660285 -0.84062761 -0.15293384
+ -1.45770351 -1.35437757 -1.3383892  -0.56005627 -1.9707767  -0.27094966
+ -1.1096759  -1.40044736 -1.15568618 -0.37959835] &lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/068ae32f460c19e9278953ee3ace04c4e831dc46bedd490ab670c4db6f9435a7.png" src="_images/068ae32f460c19e9278953ee3ace04c4e831dc46bedd490ab670c4db6f9435a7.png" />
+<img alt="_images/ad8cb5a7095970f4a597ebabab042cb63c1353b06a0729cd8d4e2973d0cadfa2.png" src="_images/ad8cb5a7095970f4a597ebabab042cb63c1353b06a0729cd8d4e2973d0cadfa2.png" />
 </div>
 </div>
 </section>
