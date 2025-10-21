@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-a-star-with-uncertainties">Estimating the age of a star with uncertainties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#estimating-the-age-of-multiple-stars-with-uncertainties">Estimating the age of multiple stars with uncertainties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#working-with-big-datasets">Working with big datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#coeval-cluster-population-age">Coeval (cluster) population age</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#age-model-properties">Age model properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#plotting-an-hr-diagram">Plotting an HR Diagram</a></li>
 </ul>
@@ -246,8 +247,8 @@ BaSTI_HSTModel (http://basti-iac.oa-abruzzo.inaf.it/)
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.72104573],
-       [5.97925446]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.81505156],
+       [5.83193499]])
 </pre></div>
 </div>
 </div>
@@ -462,6 +463,32 @@ In this case, you can pass the argument <code class="docutils literal notranslat
 </div>
 </div>
 </details>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="coeval-cluster-population-age">
+<h1>Coeval (cluster) population age<a class="headerlink" href="#coeval-cluster-population-age" title="Link to this heading"></a></h1>
+<p>If you are dating a stellar population that is coeval, you might want to estimate the overall age of your population. To this end, after running the age prediction (with <code class="docutils literal notranslate"><span class="pre">store_samples=True</span></code>), you can call the <code class="docutils literal notranslate"><span class="pre">population_age()</span></code>. This works by multiplying individual age probability distribution functions (pdfs) together and returning the maximum value of this global pdf. By default, it uses 280 bins between 0 and 14 Gyr, but you can use the <code class="docutils literal notranslate"><span class="pre">nbins</span></code>, <code class="docutils literal notranslate"><span class="pre">min_age</span></code> and <code class="docutils literal notranslate"><span class="pre">max_age</span></code> arguments to change this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span>
+    <span class="n">met</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span>
+    <span class="n">mag</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span>
+    <span class="n">emet</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+    <span class="n">emag</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+    <span class="n">ecol</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">10_000</span>
+<span class="p">)</span>
+
+<span class="n">age_model</span><span class="o">.</span><span class="n">population_age</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.725)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="age-model-properties">
