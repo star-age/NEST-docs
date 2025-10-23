@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#coeval-cluster-population-age">Coeval (cluster) population age</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#age-model-properties">Age model properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#plotting-an-hr-diagram">Plotting an HR Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">Plotting an HR Diagram</a></li>
 </ul>
 
         </div>
@@ -533,6 +534,9 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="plotting-an-hr-diagram">
 <h1>Plotting an HR Diagram<a class="headerlink" href="#plotting-an-hr-diagram" title="Link to this heading"></a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Plotting an HR Diagram<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>You need the matplotlib package for this function.</p>
@@ -542,13 +546,8 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 <p class="admonition-title">Note</p>
 <p>By default, the curve data is not included in the NEST package, so the first time, you will be prompted to download them (27.9Mb).</p>
 </div>
-<p>This method is very flexible in its arguments. You can pass it:</p>
-<ul class="simple">
-<li><p>nothing if you already ran <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code> with <code class="docutils literal notranslate"><span class="pre">store_samples=True</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">met</span></code>,<code class="docutils literal notranslate"><span class="pre">mag</span></code>,<code class="docutils literal notranslate"><span class="pre">col</span></code> and it will compute the ages</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mag</span></code>,<code class="docutils literal notranslate"><span class="pre">col</span></code>,<code class="docutils literal notranslate"><span class="pre">ages</span></code> and it will use the ages provided</p></li>
-</ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">isochrone_met</span></code> option lets you choose which set of isochrones will be plotted. You can choose between [M/H] = {-2,1,0}. The <code class="docutils literal notranslate"><span class="pre">age_type</span></code> option lets you choose the type of ages used to color the stars, between <code class="docutils literal notranslate"><span class="pre">'median'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> and <code class="docutils literal notranslate"><span class="pre">'mode'</span></code>. Finally, the <code class="docutils literal notranslate"><span class="pre">check_domain</span></code> option restricts the plotted stars to stars being in the domain of the training grid (<code class="docutils literal notranslate"><span class="pre">true</span></code> by default).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">isochrone_met</span></code> option lets you choose which set of isochrones will be plotted. You can choose between [M/H] = {-2,1,0}.</p>
+<p>If you already ran <code class="docutils literal notranslate"><span class="pre">ages_prediction()</span></code>, the method will by default plot the stars colored by age. If you only want to plot isochrones, pass the <code class="docutils literal notranslate"><span class="pre">plot_stars=False</span></code> argument. The <code class="docutils literal notranslate"><span class="pre">age_type</span></code> option lets you choose the type of ages used to color the stars, between <code class="docutils literal notranslate"><span class="pre">'median'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> and <code class="docutils literal notranslate"><span class="pre">'mode'</span></code>. The <code class="docutils literal notranslate"><span class="pre">check_domain</span></code> option restricts the plotted stars to stars being in the domain of the training grid (<code class="docutils literal notranslate"><span class="pre">true</span></code> by default).</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>In an interactive matplotlib backend, you can hover over the isochrones to get their age.</p>
@@ -562,34 +561,32 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 <span class="n">met</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">age_model</span><span class="o">.</span><span class="n">HR_diagram</span><span class="p">(</span><span class="n">met</span><span class="p">,</span><span class="n">mag</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
+<span class="n">age_model</span><span class="o">.</span><span class="n">ages_prediction</span><span class="p">(</span><span class="n">met</span><span class="o">=</span><span class="n">met</span><span class="p">,</span><span class="n">mag</span><span class="o">=</span><span class="n">mag</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+<span class="n">age_model</span><span class="o">.</span><span class="n">HR_diagram</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.32127972 -1.94498436 -0.49712305 -1.95264323 -1.52635356 -1.99187031
- -0.92846815 -1.95504969 -0.33957069 -0.86570884 -0.74868447 -1.43782219
- -1.38942308 -0.57602733 -1.42918902 -0.03062132 -0.47874858 -0.58103346
- -0.80694701 -1.0324925  -0.54192474 -0.64078898 -1.65447699 -0.08507601
- -0.60418409 -1.47305636 -0.77702417 -0.94760187 -1.46541365 -0.32021805
- -0.17220602 -0.27339968 -0.1626988  -1.84579341 -0.02938594 -1.49322095
- -0.79236661 -1.17601767 -0.70350461 -1.02201562 -1.66883228 -0.6572283
- -1.16748316 -1.2664032  -1.2748056  -0.41492059 -1.37578459 -1.36834622
- -0.59145993 -0.18256234 -1.63485763 -1.58045589 -0.6329881  -1.59577602
- -1.92867596 -1.71552762 -0.56767161 -1.11247534 -1.45083721 -1.25862752
- -0.07600204 -1.83104084 -1.88662088 -0.28154779 -1.63160081 -1.80036339
- -0.56657154 -0.37365115 -0.47713915 -0.72759991 -1.09324491 -1.99814619
- -1.17358535 -1.88677207 -1.07271124 -1.96481188 -0.5776946  -0.15934468
- -1.37939531 -0.87726434 -0.55067214 -0.98225361 -0.596304   -0.75379434
- -1.47076367 -0.80570647 -0.82993505 -0.52660285 -0.84062761 -0.15293384
- -1.45770351 -1.35437757 -1.3383892  -0.56005627 -1.9707767  -0.27094966
- -1.1096759  -1.40044736 -1.15568618 -0.37959835] &lt;class &#39;numpy.ndarray&#39;&gt;
+<img alt="_images/e661fc1982663837db28301f3f26d8492461d2783b784089fe4f8a699eb6279b.png" src="_images/e661fc1982663837db28301f3f26d8492461d2783b784089fe4f8a699eb6279b.png" />
+</div>
+</div>
+<p>Finally, if you are plotting a star population, the method will by default plot the isochrone with the same age as the median age of the population (computed using <code class="docutils literal notranslate"><span class="pre">age_model.population_age()</span></code> if you stored samples, otherwise using the median of the type of individual ages you chose). You can disable this by setting <code class="docutils literal notranslate"><span class="pre">plot_isochrone</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>. If you want to plot a specific isochrone(s), you can instead set <code class="docutils literal notranslate"><span class="pre">plot_isochrone</span></code> to an age value in Gyr or a list of age values.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Currently, plotting individual isochrones is restricted to the BaSTI model, as it involves interpolation between a precomputed isochrone set, which is as of yet not fully implemented for other grids.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_model</span> <span class="o">=</span> <span class="n">NEST</span><span class="o">.</span><span class="n">BaSTIModel</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">age_model</span><span class="o">.</span><span class="n">HR_diagram</span><span class="p">(</span><span class="n">plot_isochrone</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
 </pre></div>
 </div>
-<img alt="_images/ad8cb5a7095970f4a597ebabab042cb63c1353b06a0729cd8d4e2973d0cadfa2.png" src="_images/ad8cb5a7095970f4a597ebabab042cb63c1353b06a0729cd8d4e2973d0cadfa2.png" />
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/29118a5d1dbeefd626f40f7b32a15d9fdaed15a57847722988094e4d8da91fb3.png" src="_images/29118a5d1dbeefd626f40f7b32a15d9fdaed15a57847722988094e4d8da91fb3.png" />
 </div>
 </div>
-<p>If you want to plot isochrones on one of your existing figures, you can pass the method your <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code> objects, and nothing else.</p>
+<p>If you want to plot isochrones on one of your existing figures, you can pass the method your <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code> objects, and nothing else. Otherwise, the <code class="docutils literal notranslate"><span class="pre">HR_diagram()</span></code> method returns a (<code class="docutils literal notranslate"><span class="pre">fig</span></code>,<code class="docutils literal notranslate"><span class="pre">ax</span></code>) tuple, so you can plot more objects on top by using the outputed figure and axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
