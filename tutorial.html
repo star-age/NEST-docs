@@ -486,7 +486,7 @@ In this case, you can pass the argument <code class="docutils literal notranslat
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\tau=1.73_{-0.29}^{+-0.06}\,\mathrm{Gyr}\]</div>
+\[\tau=1.73_{-0.35}^{+0.05}\,\mathrm{Gyr}\]</div>
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">population_age()</span></code> method accepts the following arguments :</p>
@@ -501,9 +501,6 @@ In this case, you can pass the argument <code class="docutils literal notranslat
 <section class="tex2jax_ignore mathjax_ignore" id="age-model-properties">
 <h1>Age model properties<a class="headerlink" href="#age-model-properties" title="Link to this heading"></a></h1>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">age_model.samples</span></code> returns an (N,n,m) np.array of the latest samples used for the age predictions, if they were stored.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">age_model.ages</span></code> returns an (N,n) np.array of the latest age predictions ran.
-N : number of stars, n : number of samples, m : inputs dimension (3 if using metallicity,magnitude &amp; color, 5 if using GBP &amp; GRP in addition).# Age model properties</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">age_model.samples</span></code> returns an (N,n,m) np.array of the latest samples used for the age predictions, if they were stored.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">age_model.ages</span></code> returns an (N,n) np.array of the latest age predictions ran.
 N : number of stars, n : number of samples, m : inputs dimension (3 if using metallicity,magnitude &amp; color, 5 if using GBP &amp; GRP in addition).</p></li>
