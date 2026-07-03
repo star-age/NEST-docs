@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#coeval-cluster-population-age">Coeval (cluster) population age</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#age-model-properties">Age model properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#plotting-an-hr-diagram">Plotting an HR Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#isochrone-downloaders">Isochrone downloaders</a></li>
 </ul>
 
         </div>
@@ -572,7 +573,7 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 <img alt="_images/498edc35b5a4983ca61055524dae27508796fd0fc147011af569e812d5aadbfe.png" src="_images/498edc35b5a4983ca61055524dae27508796fd0fc147011af569e812d5aadbfe.png" />
 </div>
 </div>
-<p>Finally, if you are plotting a star population, the method will by default plot the isochrone with the same age as the overall age of the population (computed using <code class="docutils literal notranslate"><span class="pre">age_model.population_age()</span></code> if you stored samples, otherwise using the median of the type of individual ages you chose). You can disable this by setting <code class="docutils literal notranslate"><span class="pre">plot_isochrone</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>. If you want to plot a specific isochrone(s), you can set <code class="docutils literal notranslate"><span class="pre">isochrone_ages</span></code> to an age value in Gyr or a list of age values, as well as <code class="docutils literal notranslate"><span class="pre">isochrone_ages_std</span></code> for their associated uncertainties.</p>
+<p>If you are plotting a star population, the method will by default plot the isochrone with the same age as the overall age of the population (computed using <code class="docutils literal notranslate"><span class="pre">age_model.population_age()</span></code> if you stored samples, otherwise using the median of the type of individual ages you chose). You can disable this by setting <code class="docutils literal notranslate"><span class="pre">plot_isochrone</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>. If you want to plot a specific isochrone(s), you can set <code class="docutils literal notranslate"><span class="pre">isochrone_ages</span></code> to an age value in Gyr or a list of age values, as well as <code class="docutils literal notranslate"><span class="pre">isochrone_ages_std</span></code> for their associated uncertainties.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Currently, plotting exact individual isochrones is restricted to the BaSTI model, as it involves interpolation between a precomputed isochrone set, which is as of yet not fully implemented for other grids. For other models, the method will plot the closest isochrone in the available set of isochrones.</p>
@@ -615,6 +616,7 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 <img alt="_images/7542dca1e26732912e90acca1339e970a1768d8f451afc77a57379b107a4c764.png" src="_images/7542dca1e26732912e90acca1339e970a1768d8f451afc77a57379b107a4c764.png" />
 </div>
 </div>
+<p>If you have downloaded a specific isochrone set you want to use as curves in your HR diagram, you can do so by passing the isochrone set <code class="docutils literal notranslate"><span class="pre">.json</span></code> file to <code class="docutils literal notranslate"><span class="pre">HR_Diagram()</span></code>, or by setting the isochrone_set for the <code class="docutils literal notranslate"><span class="pre">age_model</span></code> with <code class="docutils literal notranslate"><span class="pre">age_model.set_isochrone_set(path_to_json_file)</span></code>.</p>
 <p>There are a lot of parameters to customize the look of the plotted HR Diagram. Here is a list :</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">isochrone_met</span></code>=<code class="docutils literal notranslate"><span class="pre">0</span></code>. The metallicity (between -2,1 and 0) of the plotted set of isochrones.</p></li>
@@ -622,6 +624,7 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 <li><p><code class="docutils literal notranslate"><span class="pre">plot_stars</span></code>=<code class="docutils literal notranslate"><span class="pre">True</span></code> Whether to plot individual stars.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">n_mc</span></code>=<code class="docutils literal notranslate"><span class="pre">100</span></code> Number of Monte Carlo samples for computing the population age.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">epsilon</span></code>=<code class="docutils literal notranslate"><span class="pre">None</span></code> Hardcodes the ε value used in the computation of the population age.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isochrone_set</span></code>=<code class="docutils literal notranslate"><span class="pre">None</span></code> The isochrone set to use</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">plot_isochrone_uncertainty</span></code>=<code class="docutils literal notranslate"><span class="pre">True</span></code> Whether to plot uncertainties in the isochrones as shaded areas.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isochrone_ages</span></code>=<code class="docutils literal notranslate"><span class="pre">None,</span></code> An age value or list of age values of isochrones to be displayed.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isochrone_ages_std</span></code>=<code class="docutils literal notranslate"><span class="pre">None</span></code> The associated uncertainties.</p></li>
@@ -643,6 +646,79 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 <li><p><code class="docutils literal notranslate"><span class="pre">colorbar_pad</span></code>=<code class="docutils literal notranslate"><span class="pre">0.02</span></code> Padding of the colorbar.</p></li>
 </ul>
 <p>Any other keyword argument will be passed to the function plotting the set of isochrones, so for example, if you only want the best fitted isochrone but no other, you can pass the argument <code class="docutils literal notranslate"><span class="pre">alpha=0</span></code>.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="isochrone-downloaders">
+<h1>Isochrone downloaders<a class="headerlink" href="#isochrone-downloaders" title="Link to this heading"></a></h1>
+<p>You can download sets of isochrones with defined age ranges, metallicity ranges and parameters, from the <code class="docutils literal notranslate"><span class="pre">BaSTI</span></code> and <code class="docutils literal notranslate"><span class="pre">PARSEC</span></code> evolutionary grids, by using the submodule <code class="docutils literal notranslate"><span class="pre">NEST.isochrones_downloaders</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need the following packages installed for this feature:</p>
+<ul class="simple">
+<li><p>requests</p></li>
+<li><p>urllib3</p></li>
+<li><p>bs4</p></li>
+<li><p>pandas</p></li>
+</ul>
+</div>
+<p>NEST offers a direct download option if you know exactly the parameters you want:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NEST</span>
+<span class="n">NEST</span><span class="o">.</span><span class="n">isochrones_downloaders</span><span class="o">.</span><span class="n">BaSTI</span><span class="o">.</span><span class="n">download_isochrones</span><span class="p">(</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;BaSTI_isochrones&#39;</span><span class="p">,</span>
+    <span class="n">use_log_age</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">age_min</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">age_max</span><span class="o">=</span><span class="mf">14_000.0</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">age_step</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">met_min</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">met_max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">met_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="s2">&quot;P00&quot;</span><span class="p">,</span><span class="c1">#[⍺/Fe]=-0.2 -&gt; &quot;M02&quot; / [⍺/Fe]=0.0 -&gt; &quot;P00&quot; / [⍺/Fe]=0.4 -&gt; &quot;P04&quot; </span>
+    <span class="n">grid</span><span class="o">=</span><span class="s2">&quot;P00O1D1E1Y247&quot;</span><span class="p">,</span><span class="c1">#</span>
+    <span class="n">phot_system</span><span class="o">=</span><span class="s2">&quot;GAIA-DR3&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NEST</span><span class="o">.</span><span class="n">isochrones_downloaders</span><span class="o">.</span><span class="n">PARSEC</span><span class="o">.</span><span class="n">download_isochrones</span><span class="p">(</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;PARSEC_isochrones&quot;</span><span class="p">,</span>
+    <span class="n">use_log_age</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">age_min</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span><span class="c1">#Myr,</span>
+    <span class="n">age_max</span><span class="o">=</span><span class="mf">14_000.0</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">age_step</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">met_min</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">met_max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">met_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">track_parsec</span><span class="o">=</span><span class="s2">&quot;parsec_CAF09_v2.0&quot;</span><span class="p">,</span>
+    <span class="n">track_colibri</span><span class="o">=</span><span class="s2">&quot;parsec_CAF09_v1.2S_S_LMC_08_web&quot;</span><span class="p">,</span>
+    <span class="n">photsys_file</span><span class="o">=</span><span class="s2">&quot;YBC_tab_mag_odfnew/tab_mag_gaiaEDR3.dat&quot;</span><span class="p">,</span>
+    <span class="n">photsys_version</span><span class="o">=</span><span class="s2">&quot;YBCnewVega&quot;</span><span class="p">,</span>
+    <span class="n">imf_file</span><span class="o">=</span><span class="s2">&quot;tab_imf/imf_kroupa_orig.dat&quot;</span><span class="p">,</span>
+    <span class="n">extinction_av</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">cut_evolutionary_phases</span><span class="o">=</span><span class="kc">False</span><span class="c1">#Whether to remove preMS and later evolutionary stages</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are not sure about which parameter value to use, you can use the interactive downloaders instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NEST</span><span class="o">.</span><span class="n">isochrones_downloaders</span><span class="o">.</span><span class="n">BaSTI</span><span class="o">.</span><span class="n">interactive_isochrones_downloader</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NEST</span><span class="o">.</span><span class="n">isochrones_downloaders</span><span class="o">.</span><span class="n">PARSEC</span><span class="o">.</span><span class="n">interactive_isochrones_downloader</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
