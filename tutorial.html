@@ -649,7 +649,7 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="isochrone-downloaders">
 <h1>Isochrone downloaders<a class="headerlink" href="#isochrone-downloaders" title="Link to this heading"></a></h1>
-<p>You can download sets of isochrones with defined age ranges, metallicity ranges and parameters, from the <code class="docutils literal notranslate"><span class="pre">BaSTI</span></code> and <code class="docutils literal notranslate"><span class="pre">PARSEC</span></code> evolutionary grids, by using the submodule <code class="docutils literal notranslate"><span class="pre">NEST.isochrones_downloaders</span></code>.</p>
+<p>You can download sets of isochrones with defined age ranges, metallicity ranges and parameters, from the <code class="docutils literal notranslate"><span class="pre">BaSTI</span></code>, <code class="docutils literal notranslate"><span class="pre">PARSEC</span></code> and <code class="docutils literal notranslate"><span class="pre">MIST</span></code> evolutionary grids, by using the submodule <code class="docutils literal notranslate"><span class="pre">NEST.isochrones_downloaders</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You need the following packages installed for this feature:</p>
@@ -704,6 +704,26 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NEST</span><span class="o">.</span><span class="n">isochrones_downloaders</span><span class="o">.</span><span class="n">MIST</span><span class="o">.</span><span class="n">download_isochrones</span><span class="p">(</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;MIST_isochrones&quot;</span><span class="p">,</span>
+    <span class="n">use_log_age</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+    <span class="n">age_min</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">age_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">age_step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="c1">#Myr</span>
+    <span class="n">met_min</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">met_max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">met_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;2.5&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="s2">&quot;p0&quot;</span><span class="p">,</span>
+    <span class="n">phot_system</span><span class="o">=</span><span class="s2">&quot;UBVRIplus&quot;</span><span class="p">,</span>
+    <span class="n">cut_evolutionary_phases</span><span class="o">=</span><span class="kc">False</span><span class="c1">#Whether to remove preMS and later evolutionary stages</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>If you are not sure about which parameter value to use, you can use the interactive downloaders instead:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,6 +735,13 @@ N : number of stars, n : number of samples, m : inputs dimension (3 if using met
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NEST</span><span class="o">.</span><span class="n">isochrones_downloaders</span><span class="o">.</span><span class="n">PARSEC</span><span class="o">.</span><span class="n">interactive_isochrones_downloader</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NEST</span><span class="o">.</span><span class="n">isochrones_downloaders</span><span class="o">.</span><span class="n">MIST</span><span class="o">.</span><span class="n">interactive_isochrones_downloader</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
